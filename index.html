@@ -259,6 +259,7 @@ p{margin:0}
 .burger[aria-expanded="true"] .burger__bars::before{top:0;transform:rotate(45deg)}
 .burger[aria-expanded="true"] .burger__bars::after{top:0;transform:rotate(-45deg)}
 .mnav{border-top:2px solid var(--ink);background:var(--yellow);display:grid;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+.mnav[hidden],[hidden]{display:none!important}
 .mnav a{display:block;padding-block:16px;border-bottom:2px solid var(--ink);text-decoration:none;font:900 30px/1 var(--display);font-stretch:62%;text-transform:uppercase}
 .mnav a:last-child{border-bottom:0}
 .actionbar{display:none}
@@ -727,6 +728,7 @@ p{margin:0}
   if(mt && mn){
     mt.addEventListener("click", function(){ var open = mt.getAttribute("aria-expanded")==="true"; mt.setAttribute("aria-expanded", !open); mn.hidden = open; });
     mn.addEventListener("click", function(e){ if(e.target.closest("a")){ mt.setAttribute("aria-expanded","false"); mn.hidden = true; } });
+    document.addEventListener("keydown", function(e){ if(e.key==="Escape" && !mn.hidden){ mt.setAttribute("aria-expanded","false"); mn.hidden = true; mt.focus(); } });
   }
 
   // Menu tabs
