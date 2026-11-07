@@ -6,7 +6,7 @@ Built by Chwispy Studio as a static page: open `index.html` in a browser, or hos
 
 ## What's on the page
 - Live "open now / closed" status and today's hours, based on Pacific time
-- Story, full drink menu (Signature and Classic tabs), add-ons
+- About Us, full drink menu (Signature and Classic tabs), add-ons
 - Gallery, location, directions, hours, contact and social links
 - eGift card and customer rewards links
 
@@ -16,3 +16,4 @@ All copy, menu items, prices, hours, links, logo and photos come from popclutchc
 ## Files
 - `index.html` — the whole site (HTML, CSS and a small script inline)
 - `images/` — logo and photos
+- `pop-clutch-coffee.html` — the same page as one standalone file with the logo and photos built in, so it opens on its own without the `images/` folder. Rebuild it after editing `index.html`.
