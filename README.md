@@ -18,5 +18,6 @@ All copy, menu items, prices, hours, links, logo and photos come from popclutchc
 - `images/` — logo and photos
 - `pop-clutch-coffee.html` — the same page as one standalone file with the logo and photos built in, so it opens on its own without the `images/` folder. Rebuild it after editing `index.html`.
 - `squarespace/` — how to rebuild this design inside Pop Clutch's Squarespace site with native sections and blocks, so the shop can edit it themselves:
+  - `EASY-GUIDE.md` / `EASY-GUIDE.pdf` — plain-words, one-step-at-a-time guide for the shop owners (printable PDF)
   - `BUILD-SHEET.md` — step by step, every section in order with its blocks, text and photos
   - `pop-clutch-custom.css` — paste into Custom CSS for the fonts, buttons, checkered flags, menu card colors and phone layout
