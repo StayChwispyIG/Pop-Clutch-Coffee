@@ -1,0 +1,468 @@
+/* ==========================================================================
+   POP CLUTCH COFFEE · Custom CSS for Squarespace 7.1 (Fluid Engine)
+   --------------------------------------------------------------------------
+   Paste this whole file into the Custom CSS panel and click Save.
+   Works on every Squarespace plan (the CSS editor is on all plans).
+
+   It hooks onto the section anchor names from BUILD-SHEET.md:
+     home · flag-photos · about · checker-1 · checker-2 · menu ·
+     gallery · visit · rewards · finish-line
+   If a section style doesn't show, check that section's anchor name
+   is spelled exactly like that (lowercase, no spaces).
+
+   Written plain on purpose: no CSS variables, no calc(), no "/" in
+   background shorthand, because Squarespace's CSS editor runs LESS and
+   can mangle those. If the editor underlines a line (for example the
+   checkered gradients), save anyway and check the live page: its
+   checker can flag valid modern CSS.
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. FONTS
+   Archivo with its width axis gives the giant condensed headings (62%)
+   and the wide italic nav (125%). DM Mono is for small labels.
+   If the editor rejects this @import line, delete it and instead pick
+   "Archivo" for headings and body in Site Styles > Fonts. Everything
+   still works, the headings just won't be as narrow.
+   -------------------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=DM+Mono:wght@400;500&display=swap');
+
+body,
+p,
+.sqs-block-content {
+  font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
+}
+
+h1, h2 {
+  font-family: "Archivo", "Arial Narrow", Arial, sans-serif !important;
+  font-weight: 900 !important;
+  font-stretch: 62%;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  line-height: 0.88;
+}
+
+h3 {
+  font-family: "Archivo", Arial, sans-serif !important;
+  font-weight: 900 !important;
+  font-stretch: 112%;
+  text-transform: uppercase;
+  line-height: 1.05;
+}
+
+h4 {
+  font-family: "Archivo", Arial, sans-serif !important;
+  font-weight: 800 !important;
+  font-stretch: 100%;
+}
+
+/* Small "eyebrow" labels: make a paragraph a Paragraph 3 (P3) in the
+   text block and it picks this up. */
+.sqs-html-content p.sqsrte-small,
+.sqs-html-content .sqsrte-small {
+  font-family: "DM Mono", ui-monospace, Menlo, monospace !important;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+
+/* --------------------------------------------------------------------------
+   2. HEADER: wide italic nav + thin checkered flag strip under it
+   -------------------------------------------------------------------------- */
+#header .header-nav-item a,
+#header .header-nav-folder-title {
+  font-family: "Archivo", Arial, sans-serif !important;
+  font-style: italic;
+  font-weight: 800 !important;
+  font-stretch: 125%;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 14px;
+}
+
+#header {
+  border-bottom: 2px solid #121110;
+}
+
+#header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: 12px;
+  background-color: #FBF8F1;
+  background-image: repeating-conic-gradient(#121110 0% 25%, #FBF8F1 0% 50%);
+  background-size: 12px 12px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Mobile menu that slides open from the burger */
+.header-menu .header-menu-nav-item a {
+  font-family: "Archivo", Arial, sans-serif !important;
+  font-weight: 900 !important;
+  font-stretch: 62%;
+  text-transform: uppercase;
+  font-size: 34px;
+}
+
+
+/* --------------------------------------------------------------------------
+   3. BUTTONS: square, black outline, offset shadow (the Fizz look)
+   Primary = yellow · Secondary = black · Tertiary = paper white
+   -------------------------------------------------------------------------- */
+.sqs-button-element--primary,
+.sqs-button-element--secondary,
+.sqs-button-element--tertiary {
+  border: 2.5px solid #121110 !important;
+  border-radius: 0 !important;
+  box-shadow: 5px 5px 0 #121110 !important;
+  font-family: "Archivo", Arial, sans-serif !important;
+  font-weight: 900 !important;
+  font-stretch: 112%;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.sqs-button-element--primary:hover,
+.sqs-button-element--secondary:hover,
+.sqs-button-element--tertiary:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 #121110 !important;
+}
+
+.sqs-button-element--primary   { background-color: #F7C600 !important; color: #121110 !important; }
+.sqs-button-element--secondary { background-color: #121110 !important; color: #F7C600 !important; }
+.sqs-button-element--tertiary  { background-color: #FBF8F1 !important; color: #121110 !important; }
+
+/* On the black Visit section the shadow flips to yellow so it shows */
+#visit .sqs-button-element--primary,
+#visit .sqs-button-element--secondary,
+#visit .sqs-button-element--tertiary {
+  border-color: #F7C600 !important;
+  box-shadow: 5px 5px 0 #F7C600 !important;
+}
+
+
+/* --------------------------------------------------------------------------
+   4. HERO (anchor: home): giant POP / CLUTCH + arched owners photo
+   -------------------------------------------------------------------------- */
+#home h1 {
+  font-size: clamp(84px, 19vw, 260px) !important;
+  line-height: 0.82 !important;
+}
+
+#home .sqs-block-image .fluid-image-container,
+#home .sqs-block-image .image-block-wrapper {
+  border: 3px solid #121110;
+  border-bottom: 0;
+  border-radius: 220px 220px 0 0;
+  overflow: hidden;
+}
+
+/* The "strength" highlight: bold a word in the hero text block */
+#home .sqs-html-content strong {
+  background: #121110;
+  color: #F7C600;
+  padding: 0 0.25em;
+}
+
+
+/* --------------------------------------------------------------------------
+   5. ABOUT US (anchor: about): outlined photos and the big pull quote
+   -------------------------------------------------------------------------- */
+#about .sqs-block-image .fluid-image-container,
+#about .sqs-block-image .image-block-wrapper {
+  border: 3px solid #121110;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+#about blockquote,
+#about .sqs-block-quote blockquote {
+  font-family: "Archivo", Arial, sans-serif !important;
+  font-weight: 900;
+  font-stretch: 62%;
+  text-transform: uppercase;
+  font-size: clamp(34px, 6vw, 72px);
+  line-height: 0.95;
+}
+
+
+/* --------------------------------------------------------------------------
+   6. CHECKERED RACE FLAG STRIPS
+   Any section whose anchor starts with "checker" (checker-1, checker-2 …)
+   becomes a 44px checkered band. Its content is hidden, so leave it empty.
+   -------------------------------------------------------------------------- */
+section[id^="checker"] {
+  height: 44px !important;
+  min-height: 44px !important;
+  padding: 0 !important;
+  overflow: hidden;
+  border-top: 3px solid #121110;
+  border-bottom: 3px solid #121110;
+}
+
+section[id^="checker"] .content-wrapper {
+  display: none !important;
+}
+
+section[id^="checker"] .section-background {
+  background-color: #FBF8F1 !important;
+  background-image: repeating-conic-gradient(#121110 0% 25%, #FBF8F1 0% 50%) !important;
+  background-size: 44px 44px !important;
+}
+
+/* Checkered photo strip in About Us (anchor: flag-photos): the photos sit
+   on a checkered field, like Pop Clutch's own Our Story page. */
+#flag-photos .section-background {
+  background-color: #FBF8F1 !important;
+  background-image: repeating-conic-gradient(#121110 0% 25%, #FBF8F1 0% 50%) !important;
+  background-size: 120px 120px !important;
+}
+
+#flag-photos .sqs-block-image .fluid-image-container,
+#flag-photos .sqs-block-image .image-block-wrapper {
+  border: 3px solid #121110;
+  overflow: hidden;
+}
+
+
+/* --------------------------------------------------------------------------
+   7. FINISH LINE above the footer (anchor: finish-line)
+   Checkered band with one centered text block styled as a yellow tag.
+   -------------------------------------------------------------------------- */
+#finish-line .section-background {
+  background-color: #121110 !important;
+  background-image: repeating-conic-gradient(#121110 0% 25%, #FBF8F1 0% 50%) !important;
+  background-size: 52px 52px !important;
+}
+
+#finish-line .sqs-html-content p,
+#finish-line .sqs-html-content h3,
+#finish-line .sqs-html-content h4 {
+  display: inline-block;
+  background: #F7C600;
+  color: #121110 !important;
+  border: 3px solid #121110;
+  box-shadow: 5px 5px 0 #121110;
+  padding: 10px 18px;
+  font-family: "Archivo", Arial, sans-serif !important;
+  font-style: italic;
+  font-weight: 900 !important;
+  font-stretch: 125%;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+
+/* --------------------------------------------------------------------------
+   8. DRINK MENU (anchor: menu): Squarespace Menu block styled as
+   colored flavor cards. Sections are colored in the order they're
+   written: Banana, Strawberry, Ube, Orange, Cold Brew, The Randos.
+   The Classic tab's sections reuse the first colors.
+   -------------------------------------------------------------------------- */
+.menu-block .menu-section {
+  border: 3px solid #121110;
+  border-radius: 22px;
+  box-shadow: 6px 6px 0 #121110;
+  padding: 24px !important;
+  margin-bottom: 24px !important;
+  background: #FBF8F1;
+  color: #121110;
+}
+
+.menu-block .menu-section:nth-of-type(1) { background: #FFE36E; }
+.menu-block .menu-section:nth-of-type(2) { background: #FF9DBB; }
+.menu-block .menu-section:nth-of-type(3) { background: #BBA2F2; }
+.menu-block .menu-section:nth-of-type(4) { background: #FFA24C; }
+.menu-block .menu-section:nth-of-type(5) { background: #6B4429; color: #FBF8F1; }
+.menu-block .menu-section:nth-of-type(6) { background: #121110; color: #FBF8F1; }
+.menu-block .menu-section:nth-of-type(5) *,
+.menu-block .menu-section:nth-of-type(6) * { color: #FBF8F1 !important; }
+.menu-block .menu-section:nth-of-type(6) .menu-section-title { color: #F7C600 !important; }
+
+.menu-block .menu-section-title {
+  font-family: "Archivo", Arial, sans-serif !important;
+  font-weight: 900 !important;
+  font-stretch: 62%;
+  text-transform: uppercase;
+  font-size: 48px !important;
+  line-height: 0.9 !important;
+  border-bottom: 3px solid currentColor;
+  padding-bottom: 10px;
+  margin-bottom: 14px !important;
+}
+
+.menu-block .menu-item-title {
+  font-family: "Archivo", Arial, sans-serif !important;
+  font-weight: 800 !important;
+  font-size: 18px !important;
+}
+
+.menu-block .menu-item-description {
+  opacity: 0.85;
+  font-size: 14px !important;
+}
+
+.menu-block .menu-item-price-top,
+.menu-block .menu-item-price-bottom {
+  font-family: "DM Mono", ui-monospace, Menlo, monospace !important;
+  font-weight: 500;
+}
+
+/* Signature / Classic tabs. If these don't change, the Menu block uses
+   different class names on this site; the menu still works unstyled. */
+.menu-block .menu-select-labels .menu-select-label {
+  border: 2.5px solid #121110;
+  padding: 10px 18px;
+  margin-right: 8px;
+  font-family: "Archivo", Arial, sans-serif !important;
+  font-style: italic;
+  font-weight: 900;
+  font-stretch: 125%;
+  text-transform: uppercase;
+  background: #FBF8F1;
+  color: #121110;
+  cursor: pointer;
+}
+
+.menu-block .menu-select-labels .menu-select-label--active {
+  background: #121110;
+  color: #F7C600;
+}
+
+
+/* --------------------------------------------------------------------------
+   9. GALLERY (anchor: gallery): rounded, outlined photos
+   -------------------------------------------------------------------------- */
+#gallery .sqs-block-image .fluid-image-container,
+#gallery .sqs-block-image .image-block-wrapper,
+#gallery .gallery-grid-image-link,
+#gallery .gallery-masonry-item img {
+  border: 3px solid #121110;
+  border-radius: 22px;
+  overflow: hidden;
+}
+
+
+/* --------------------------------------------------------------------------
+   10. VISIT (anchor: visit): yellow headings on black
+   -------------------------------------------------------------------------- */
+#visit h2,
+#visit h3 {
+  color: #F7C600 !important;
+}
+
+
+/* --------------------------------------------------------------------------
+   11. MOBILE ACTION BAR
+   Needs the small HTML code block from the build sheet (step 13).
+   HTML-only code blocks work on every plan. Hidden on desktop.
+   -------------------------------------------------------------------------- */
+.pc-actionbar {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .pc-actionbar {
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    background: #121110;
+    border-top: 3px solid #F7C600;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .pc-actionbar a {
+    flex: 1;
+    min-height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #F7C600 !important;
+    text-decoration: none !important;
+    font-family: "Archivo", Arial, sans-serif;
+    font-style: italic;
+    font-weight: 900;
+    font-stretch: 112%;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    border-right: 2px solid #4A4640;
+  }
+
+  .pc-actionbar a:last-child {
+    border-right: 0;
+  }
+
+  /* Room at the bottom so the bar never covers the footer */
+  #footer-sections {
+    padding-bottom: 64px;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   12. PHONES: tighter type, full-width buttons, smaller checkers
+   -------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+  #home h1 {
+    font-size: 24vw !important;
+  }
+
+  .sqs-block-button .sqs-block-button-element {
+    min-height: 52px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+
+  section[id^="checker"] {
+    height: 32px !important;
+    min-height: 32px !important;
+  }
+
+  section[id^="checker"] .section-background {
+    background-size: 32px 32px !important;
+  }
+
+  #finish-line .section-background {
+    background-size: 36px 36px !important;
+  }
+
+  #flag-photos .section-background {
+    background-size: 72px 72px !important;
+  }
+
+  .menu-block .menu-section {
+    padding: 18px !important;
+    border-radius: 16px;
+  }
+
+  .menu-block .menu-section-title {
+    font-size: 40px !important;
+  }
+
+  #header .header-nav-item a {
+    font-size: 13px;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   13. Respect "reduce motion"
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .sqs-button-element--primary,
+  .sqs-button-element--secondary,
+  .sqs-button-element--tertiary {
+    transition: none;
+  }
+}
